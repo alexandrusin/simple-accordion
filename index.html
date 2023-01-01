@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Accordion Web Component Variations</title>
+        <style>
+            body {
+                padding: 20px;
+            }
+            simple-accordion,
+            details {
+                margin: 20px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <simple-accordion only-one-opened>
+            <simple-toggle title="The sun is shining" open>
+                Dummy content of an accordion item web component.<br />This is the long description.
+            </simple-toggle>
+            <simple-toggle title="The birds are chirping">
+                This is another long description of an accordion item web component.
+            </simple-toggle>
+            <simple-toggle title="The cake is ready">
+                Yet another accordion description.
+            </simple-toggle>
+        </simple-accordion>
+
+
+        <simple-toggle title="The cake is a lie">
+            Yet another accordion description.
+        </simple-toggle>
+
+        <details is="simple-details" open>
+            <summary>Hello World</summary>
+            <p>A "Hello, World!" program is generally a computer program that ignores any input and outputs or displays a message similar to "Hello, World!"</p>
+        </details>
+
+        <script src="components/simple-accordion.js"></script>
+        <script src="components/simple-toggle.js"></script>
+        <script src="components/simple-details.js"></script>
+    </body>
+</html>
