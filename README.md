@@ -1,23 +1,19 @@
 # Accordion web component
 
 Build an accordion web component with multiple parts.
-
-## Storybook
-
 In the project directory, you can run:
+`npm install`
+`npm run storybook`
 
-### `npm install`
-### `npm run storybook`
 
+### 1. Simple Details
 
-## Simple Details
+This component extends the default [details](https://www.w3schools.com/tags/tag_details.asp) html element
 
-This component extends the default [https://www.w3schools.com/tags/tag_details.asp](details) html element
-
-## Simple Toggle
+### 2. Simple Toggle
 
 Show/hide content under a title.
 
-## Simple Accordion
+### 3. Simple Accordion
 
 This component adds extra functionality to a group of SimpleToggle components.
