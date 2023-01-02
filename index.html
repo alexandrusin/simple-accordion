@@ -10,33 +10,61 @@
                 padding: 20px;
             }
             simple-accordion,
-            details {
+            details,
+            section {
                 margin: 20px 0;
+            }
+            .card {
+                padding: 10px 20px;
+                background: #CCC;
+                border-radius: 5px;
             }
         </style>
     </head>
     <body>
-        <simple-accordion only-one-opened>
-            <simple-toggle title="The sun is shining" open>
-                Dummy content of an accordion item web component.<br />This is the long description.
-            </simple-toggle>
-            <simple-toggle title="The birds are chirping">
-                This is another long description of an accordion item web component.
-            </simple-toggle>
-            <simple-toggle title="The cake is ready">
-                Yet another accordion description.
-            </simple-toggle>
-        </simple-accordion>
+        <section>
+            <strong>Simple Details</strong>
+            <p>This component extends the default details html element</p>
+    
+            <div class="card">
+                <details is="simple-details" open>
+                    <summary>Hello World</summary>
+                    <p>A "Hello, World!" program is generally a computer program that ignores any input and outputs or displays a message similar to "Hello, World!"</p>
+                </details>
+            </div>
+        </section>
+        
+        <section>
+            <strong>Simple Toggle</strong>
+            <p>Show/hide content under a title.</p>
+
+            <div class="card">
+                <simple-toggle title="The cake is a lie">
+                    Yet another accordion description.
+                </simple-toggle>
+            </div>
+        </section>
+
+        <section>
+            <strong>Simple Accordion</strong>
+            <p>This component adds extra functionality to a group of SimpleToggle components.</p>
+    
+            <div class="card">
+                <simple-accordion only-one-opened>
+                    <simple-toggle title="The sun is shining" open>
+                        Dummy content of an accordion item web component.<br />This is the long description.
+                    </simple-toggle>
+                    <simple-toggle title="The birds are chirping">
+                        This is another long description of an accordion item web component.
+                    </simple-toggle>
+                    <simple-toggle title="The cake is ready">
+                        Yet another accordion description.
+                    </simple-toggle>
+                </simple-accordion>
+            </div>
+        </section>
 
 
-        <simple-toggle title="The cake is a lie">
-            Yet another accordion description.
-        </simple-toggle>
-
-        <details is="simple-details" open>
-            <summary>Hello World</summary>
-            <p>A "Hello, World!" program is generally a computer program that ignores any input and outputs or displays a message similar to "Hello, World!"</p>
-        </details>
 
         <script src="components/simple-accordion.js"></script>
         <script src="components/simple-toggle.js"></script>
