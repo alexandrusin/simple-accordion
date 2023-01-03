@@ -24,8 +24,7 @@ class SimpleDetails extends HTMLDetailsElement {
         title.style.cursor = 'pointer';
         title.style.borderBottom = '1px solid #EEE';
         title.style.padding = '5px 0';
-        title.style.fontWeight = '600';
-        title.style.fontSize = '18px';        
+        title.style.fontSize = '16px';        
     }
 }
 

@@ -1,71 +1,47 @@
-const simpleToggleTemplate = document.createElement('template');
-simpleToggleTemplate.innerHTML = `
-    <style>
-        :host(toggle-details) {
-            display: block;
-        }
-        .details { display: none }
-        .title {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            padding: 5px 0;
-            border-bottom: 1px solid #EEE;
-            cursor: pointer;
-        }
-        .icon {
-            font-weight: bold;
-            font-size: 20px;
-            background: #FFF;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-        }
-        .name {
-            padding: 0;
-            margin: 0;
-        }
-        .details {
-            padding: 5px 0;
-        }
-        .wrapper {
-            margin-bottom: 5px;
-        }
-        .arrow {
-            border-style: solid;
-            border-width: 0 3px 3px 0;
-            display: inline-block;
-            padding: 3px;
-            transition: transform .1s ease-in;
-        }
-        .up {
-            border-color: #111;
-            transform: rotate(-135deg);
-            -webkit-transform: rotate(-135deg);
-        }
-          
-        .down {
-            border-color: #666;
-            transform: rotate(45deg);
-            -webkit-transform: rotate(45deg);
-        }
+const styles = `
+    :host(simple-toggle) {
+        display: block;
+    }
+    .details { display: none }
+    .title {
+        padding: 5px 0;
 
-    </style>
+        display: list-item;
+        counter-increment: list-item 0;          
+        list-style: inside;
+
+        border-bottom: 1px solid #EEE;
+        cursor: pointer;
+    }
+
+    .title.closed {  
+        list-style-type: disclosure-closed ;
+    }
+
+    .title.open {
+        list-style-type: disclosure-open;
+    }
+
+    .details {            
+        padding: 5px 0;
+    }
+    .wrapper {
+        margin-bottom: 5px;
+    }
+`;
+
+const simpleToggleTemplate = document.createElement('template');
+
+simpleToggleTemplate.innerHTML = `
+    <style>${styles}</style>
     <div class="wrapper">
-        <div class="title">
-            <h3 class="name"></h3>
-            <span class="arrow down"></span>
-        </div>
+        <div class="title"></div>
         <div class="details">
             <slot></slot>
         </div>
     </div>    
-`
+`;
+
 
 // show/hide extra content under a title
 class SimpleToggle extends HTMLElement {
@@ -78,15 +54,15 @@ class SimpleToggle extends HTMLElement {
         // create a shadow root
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(simpleToggleTemplate.content.cloneNode(true));
-        
         // set the title attribute
-        let title = this.shadowRoot.querySelector('h3');
+        let title = this.shadowRoot.querySelector('.title');
         title.innerHTML = this.getAttribute('title');
     }
 
     // attached lifecycle
     connectedCallback() {
         this.shadowRoot.querySelector('.title').addEventListener('click', () => this.toggleDetails());
+        this.setDetails();
     }
 
     // detached lifecycle
@@ -112,14 +88,16 @@ class SimpleToggle extends HTMLElement {
     // show/hide details based on the open attribute
     setDetails() {
         const details = this.shadowRoot.querySelector('.details');
-        const toggleIcon = this.shadowRoot.querySelector('.arrow');
+        const title = this.shadowRoot.querySelector('.title');
 
         if (this.open) {
             details.style.display = 'block';
-            toggleIcon.classList.replace("down", "up");
+            title.classList.add("open");
+            title.classList.remove("closed");
         } else {
             details.style.display = 'none';
-            toggleIcon.classList.replace("up", "down");
+            title.classList.add("closed");
+            title.classList.remove("open");
         }
     }
 }
