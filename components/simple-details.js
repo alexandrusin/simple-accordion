@@ -20,11 +20,15 @@ class SimpleDetails extends HTMLDetailsElement {
 
     // attached lifecycle
     connectedCallback() {
+        const details = this;
         const title = this.getElementsByTagName("summary")[0];
+        details.style.color = "#666";
+
+        title.style.color = '#000';
         title.style.cursor = 'pointer';
-        title.style.borderBottom = '1px solid #EEE';
         title.style.padding = '5px 0';
-        title.style.fontSize = '16px';        
+        title.style.fontSize = '16px';
+        title.style.fontWeight = '700';
     }
 }
 

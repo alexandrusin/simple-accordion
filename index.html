@@ -4,23 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css" />        
         <title>Accordion Web Component Variations</title>
-        <style>
-            body {
-                padding: 20px;
-            }
-            simple-accordion,
-            details,
-            section {
-                margin: 20px 0;
-            }
-            /* .card {
-                padding: 10px 20px;
-                background: #CCC;
-                border-radius: 5px;
-            } */
-
-        </style>
     </head>
     <body>
         <section>
@@ -30,7 +15,7 @@
             <div class="card">
                 <details is="simple-details" open>
                     <summary>Hello World</summary>
-                    <p>A "Hello, World!" program is generally a computer program that ignores any input and outputs or displays a message similar to "Hello, World!"</p>
+                    A "Hello, World!" program is generally a computer program that ignores any input and outputs or displays a message similar to "Hello, World!"
                 </details>
             </div>
         </section>
@@ -64,8 +49,6 @@
                 </simple-accordion>
             </div>
         </section>
-
-
 
         <script src="components/simple-accordion.js"  type="module"></script>
         <script src="components/simple-toggle.js" type="module"></script>

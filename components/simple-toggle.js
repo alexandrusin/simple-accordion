@@ -2,15 +2,16 @@ const styles = `
     :host(simple-toggle) {
         display: block;
     }
+    
     .details { display: none }
     .title {
         padding: 5px 0;
+        font-weight: bold;
 
         display: list-item;
         counter-increment: list-item 0;          
         list-style: inside;
 
-        border-bottom: 1px solid #EEE;
         cursor: pointer;
     }
 
@@ -24,9 +25,7 @@ const styles = `
 
     .details {            
         padding: 5px 0;
-    }
-    .wrapper {
-        margin-bottom: 5px;
+        color: #666;
     }
 `;
 
